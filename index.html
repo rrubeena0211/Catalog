@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aesthetic You & Me | Handcrafted Candles</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;600&display=swap');
+
+*{box-sizing:border-box;}
+
+
+
+/* BLURRED BACKGROUND IMAGE */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image: url("https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  opacity: 0.4;
+  z-index: -2;
+}
+
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#3a2a1a;
+  background:#f6f1e9;
+  position:relative;
+}
+/* BLURRED BACKGROUND IMAGE FROM LOCAL FILE */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-image:url("bg.jpg");
+  background-size:cover;
+  background-position:center;
+  filter:blur(22px);
+  opacity:0.45;
+  z-index:-1;
+}
+
+
+
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  padding:40px 20px 20px;
+}
+
+.brand-logo{width:65px;}
+
+.brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+}
+
+.brand-tagline{
+  font-size:14px;
+  color:#9c7c3c;
+  letter-spacing:1px;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin:25px 0 40px;
+}
+
+nav button{
+  background:linear-gradient(135deg,#c9a24d,#e8c36a);
+  border:none;
+  color:white;
+  padding:12px 30px;
+  border-radius:40px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  transition:.3s ease;
+}
+
+nav button:hover{
+  transform:scale(1.1);
+  box-shadow:0 18px 40px rgba(0,0,0,.3);
+}
+
+nav button.active{
+  background:linear-gradient(135deg,#3a2a1a,#5a3c22);
+}
+
+/* SECTIONS */
+section{display:none;max-width:1200px;margin:auto;padding:20px;}
+section.active{display:block;}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:46px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  line-height:1.8;
+  font-size:17px;
+  color:#5a4632;
+}
+
+/* CATALOG */
+.catalog-section{margin-bottom:70px;}
+
+.catalog-title{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  margin-bottom:18px;
+  border-left:4px solid #c9a24d;
+  padding-left:14px;
+}
+
+/* CAROUSEL */
+.carousel{position:relative;overflow:hidden;}
+.slider{display:flex;gap:25px;transition:transform .6s ease;}
+
+.card{
+  min-width:260px;
+  background:#fff;
+  border-radius:28px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  position:relative;
+}
+
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:22px;
+  border:4px solid #f3e9d8;
+}
+
+.badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:#c9a24d;
+  color:white;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.card h3{
+  font-family:'Playfair Display',serif;
+  margin:14px 0 6px;
+}
+
+.price{
+  margin:10px 0;
+  padding:6px 18px;
+  border-radius:20px;
+  background:#c9a24d;
+  color:white;
+  font-weight:600;
+  display:inline-block;
+}
+
+/* BUTTONS */
+.primary-btn{
+  background:linear-gradient(135deg,#25D366,#1ebd5a);
+  color:white;
+  border:none;
+  padding:12px 26px;
+  border-radius:40px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.primary-btn:hover{transform:scale(1.1);}
+
+.secondary-btn{
+  margin-top:8px;
+  background:#f3e9d8;
+  border:none;
+  padding:10px 24px;
+  border-radius:40px;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.secondary-btn:hover{transform:scale(1.08);}
+
+/* ARROWS */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#c9a24d;
+  color:white;
+  border:none;
+  font-size:26px;
+  border-radius:50%;
+  padding:10px 16px;
+  cursor:pointer;
+}
+
+.left{left:0;}
+.right{right:0;}
+
+/* ABOUT */
+.about-box{
+  background:#fff;
+  border-radius:30px;
+  padding:40px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.about-box h2{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+}
+
+.about-box p{
+  line-height:1.9;
+  font-size:16px;
+  margin-top:15px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:white;
+  padding:30px;
+  border-radius:30px;
+  max-width:360px;
+  text-align:center;
+}
+
+/* INSTAGRAM */
+.insta{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#E1306C;
+  padding:14px;
+  border-radius:50%;
+  color:white;
+  text-decoration:none;
+}
+
+ /* SOCIAL ICON STACK */
+.social-icons{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999;
+}
+
+.social-icons a{
+  background:#ffffff;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  transition:.3s ease;
+}
+
+.social-icons a:hover{
+  transform:scale(1.15);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+
+.social-icons img{
+  width:26px;
+  height:26px;
+}
+ 
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" class="brand-logo">
+  <div>
+    <div class="brand-name">Aesthetic You & Me</div>
+    <div class="brand-tagline">HANDCRAFTED SCENTED CANDLES</div>
+  </div>
+</header>
+
+<nav>
+  <button class="active" onclick="showPage('home',this)">Home</button>
+  <button onclick="showPage('catalog',this)">Catalog</button>
+  <button onclick="showPage('about',this)">About</button>
+</nav>
+
+<section id="home" class="active">
+  <div class="hero">
+    <h1>Luxury Candles for Meaningful Moments</h1>
+    <p>
+      Thoughtfully handcrafted candles designed to bring calm,
+      warmth, and elegance into your everyday spaces.
+    </p>
+  </div>
+</section>
+
+<section id="catalog">
+
+<!-- REUSABLE CARD -->
+<script>
+function card(badge){
+return 
+<div class="card">
+  ${badge?<span class="badge">${badge}</span>:""}
+  <img src="PASTE_IMAGE_LINK_HERE">
+  <h3>Lavender Bliss</h3>
+  <div class="price">₹499</div>
+  <button class="primary-btn" onclick="orderWhatsApp('Lavender Bliss')">Order on WhatsApp</button><br>
+  <button class="secondary-btn" onclick="showDetails('Lavender Bliss','Relaxing floral candle for calm evenings.')">View Details</button>
+</div>;
+}
+</script>
+
+<!-- ALL SECTIONS -->
+<div class="catalog-section">
+  <div class="catalog-title">Best Selling</div>
+  <div class="carousel">
+    <button class="arrow left" onclick="slide(this,-1)">‹</button>
+    <div class="slider">
+      <script>document.write(card("Bestseller"))</script>
+      <script>document.write(card())</script>
+    </div>
+    <button class="arrow right" onclick="slide(this,1)">›</button>
+  </div>
+</div>
+
+<div class="catalog-section">
+  <div class="catalog-title">Jar Candles</div>
+  <div class="carousel">
+    <button class="arrow left" onclick="slide(this,-1)">‹</button>
+    <div class="slider">
+      <script>document.write(card())</script>
+      <script>document.write(card())</script>
+    </div>
+    <button class="arrow right" onclick="slide(this,1)">›</button>
+  </div>
+</div>
+
+<div class="catalog-section">
+  <div class="catalog-title">Mould Candles</div>
+  <div class="carousel">
+    <button class="arrow left" onclick="slide(this,-1)">‹</button>
+    <div class="slider">
+      <script>document.write(card())</script>
+      <script>document.write(card())</script>
+    </div>
+    <button class="arrow right" onclick="slide(this,1)">›</button>
+  </div>
+</div>
+
+<div class="catalog-section">
+  <div class="catalog-title">Couple Candles</div>
+  <div class="carousel">
+    <button class="arrow left" onclick="slide(this,-1)">‹</button>
+    <div class="slider">
+      <script>document.write(card())</script>
+      <script>document.write(card())</script>
+    </div>
+    <button class="arrow right" onclick="slide(this,1)">›</button>
+  </div>
+</div>
+
+<div class="catalog-section">
+  <div class="catalog-title">Gifting Packs</div>
+  <div class="carousel">
+    <button class="arrow left" onclick="slide(this,-1)">‹</button>
+    <div class="slider">
+      <script>document.write(card())</script>
+      <script>document.write(card())</script>
+    </div>
+    <button class="arrow right" onclick="slide(this,1)">›</button>
+  </div>
+</div>
+
+<div class="catalog-section">
+  <div class="catalog-title">Clearance Sale</div>
+  <div class="carousel">
+    <button class="arrow left" onclick="slide(this,-1)">‹</button>
+    <div class="slider">
+      <script>document.write(card())</script>
+      <script>document.write(card())</script>
+    </div>
+    <button class="arrow right" onclick="slide(this,1)">›</button>
+  </div>
+</div>
+
+</section>
+
+<section id="about">
+  <div class="about-box">
+    <h2>Our Story</h2>
+    <p>
+      Aesthetic You & Me was born from a love for calm spaces, warm light,
+      and thoughtful living. Each candle is hand-poured in small batches,
+      using quality wax and carefully curated fragrances.<br><br>
+      We believe candles aren’t just products — they are moods,
+      moments, and memories.
+    </p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3 id="mTitle"></h3>
+    <p id="mText"></p>
+    <button class="primary-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+  
+  
+<div class="social-icons">
+  <a href="https://www.instagram.com/aestheticyouandme1929?igsh=OHA5YzZvYWFmZjh6" target="_blank">
+    <img src="instagram.png" alt="Instagram">
+  </a>
+
+  <a href="https://www.amazon.in/l/27943762031?me=A126WB4R40DL2Y&tag=ShopReferral_7deba983-7c4a-49ad-a1d0-70a1b5bb6d6e&ref=sf_seller_app_share_new_ls_srb&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank">
+    <img src="amazon.png" alt="Amazon">
+  </a>
+</div>
+
+<script>
+function showPage(id,btn){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function slide(btn,dir){
+  const slider=btn.parentElement.querySelector('.slider');
+  let x=slider.dataset.x||0;
+  x=Number(x)+(dir*280);
+  slider.style.transform=translateX(${x}px);
+  slider.dataset.x=x;
+}
+
+function orderWhatsApp(name){
+  const msg=encodeURIComponent("Hi, I am interested in this candle: "+name);
+  window.open(https://wa.me/9728293783?text=${msg},'_blank');
+}
+
+function showDetails(t,d){
+  mTitle.innerText=t;
+  mText.innerText=d;
+  modal.style.display="flex";
+}
+function closeModal(){modal.style.display="none";}
+</script>
+
+</body>
+</html>
+
+
+
