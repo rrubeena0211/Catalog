@@ -205,9 +205,9 @@ section.active{display:block;}
 
 /* ARROWS */
 .arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background:#c9a24d;
   color:white;
   border:none;
@@ -215,7 +215,11 @@ section.active{display:block;}
   border-radius:50%;
   padding:10px 16px;
   cursor:pointer;
+  z-index: 5; /* keeps arrow above cards */
 }
+
+.left{ left: 6px; }
+.right{ right: 6px; }
 
 .left{left:0;}
 .right{right:0;}
@@ -303,51 +307,24 @@ section.active{display:block;}
 }
  /* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px){
-
-  header{
-    flex-direction:column;
-    text-align:center;
+  .carousel{
+    overflow: hidden; /* arrows stay fixed */
   }
 
-  .brand-name{
-    font-size:28px;
-  }
-
-  nav{
-    flex-wrap:wrap;
-    gap:12px;
-  }
-
-  nav button{
-    padding:10px 20px;
-    font-size:14px;
-  }
-
-  .hero h1{
-    font-size:32px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .catalog-title{
-    font-size:24px;
+  .slider{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
 
   .card{
-    min-width:230px;
-  }
-
-  .arrow{
-    display:none; /* swipe instead on mobile */
-  }
-
-  .social-icons{
-    right:10px;
-    bottom:10px;
+    scroll-snap-align: start;
   }
 }
+
+
+
+
 
 </style>
 </head>
@@ -380,30 +357,14 @@ section.active{display:block;}
 
 <section id="catalog">
 
-<!-- REUSABLE CARD -->
-<script>
-function card(badge){
-return `
-<div class="card">
-  ${badge?`<span class="badge">${badge}</span>`:""}
-  <img src="PASTE_IMAGE_LINK_HERE">
-  <h3>Lavender Bliss</h3>
-  <div class="price">₹499</div>
-  <button class="primary-btn" onclick="orderWhatsApp('Lavender Bliss')">Order on WhatsApp</button><br>
-  <button class="secondary-btn" onclick="showDetails('Lavender Bliss','Relaxing floral candle for calm evenings.')">View Details</button>
-</div>`;
-}
-</script>
+
 
 <!-- ALL SECTIONS -->
 <div class="catalog-section">
   <div class="catalog-title">Best Selling</div>
   <div class="carousel">
     <button class="arrow left" onclick="slide(this,-1)">‹</button>
-    <div class="slider">
-      <script>document.write(card("Bestseller"))</script>
-      <script>document.write(card())</script>
-    </div>
+      <div class="slider" id="best-selling"></div>
     <button class="arrow right" onclick="slide(this,1)">›</button>
   </div>
 </div>
@@ -412,10 +373,8 @@ return `
   <div class="catalog-title">Jar Candles</div>
   <div class="carousel">
     <button class="arrow left" onclick="slide(this,-1)">‹</button>
-    <div class="slider">
-      <script>document.write(card())</script>
-      <script>document.write(card())</script>
-    </div>
+    <div class="slider" id="jar-candles"></div>
+
     <button class="arrow right" onclick="slide(this,1)">›</button>
   </div>
 </div>
@@ -424,10 +383,8 @@ return `
   <div class="catalog-title">Mould Candles</div>
   <div class="carousel">
     <button class="arrow left" onclick="slide(this,-1)">‹</button>
-    <div class="slider">
-      <script>document.write(card())</script>
-      <script>document.write(card())</script>
-    </div>
+  <div class="slider" id="mould-candles"></div>
+
     <button class="arrow right" onclick="slide(this,1)">›</button>
   </div>
 </div>
@@ -436,10 +393,8 @@ return `
   <div class="catalog-title">Couple Candles</div>
   <div class="carousel">
     <button class="arrow left" onclick="slide(this,-1)">‹</button>
-    <div class="slider">
-      <script>document.write(card())</script>
-      <script>document.write(card())</script>
-    </div>
+   <div class="slider" id="couple-candles"></div>
+
     <button class="arrow right" onclick="slide(this,1)">›</button>
   </div>
 </div>
@@ -448,10 +403,8 @@ return `
   <div class="catalog-title">Gifting Packs</div>
   <div class="carousel">
     <button class="arrow left" onclick="slide(this,-1)">‹</button>
-    <div class="slider">
-      <script>document.write(card())</script>
-      <script>document.write(card())</script>
-    </div>
+   <div class="slider" id="gifting-packs"></div>
+
     <button class="arrow right" onclick="slide(this,1)">›</button>
   </div>
 </div>
@@ -460,10 +413,8 @@ return `
   <div class="catalog-title">Clearance Sale</div>
   <div class="carousel">
     <button class="arrow left" onclick="slide(this,-1)">‹</button>
-    <div class="slider">
-      <script>document.write(card())</script>
-      <script>document.write(card())</script>
-    </div>
+   <div class="slider" id="clearance-sale"></div>
+
     <button class="arrow right" onclick="slide(this,1)">›</button>
   </div>
 </div>
@@ -532,10 +483,47 @@ function showDetails(t,d){
 }
 function closeModal(){modal.style.display="none";}
 </script>
+<script>
+
+
+fetch("data.json")
+  .then(res => res.json())
+  .then(data => buildCatalog(data.products));
+
+function buildCatalog(products) {
+  const sections = {
+    "Best Selling": document.querySelector("#best-selling"),
+    "Jar Candles": document.querySelector("#jar-candles"),
+    "Mould Candles": document.querySelector("#mould-candles"),
+    "Couple Candles": document.querySelector("#couple-candles"),
+    "Gifting Packs": document.querySelector("#gifting-packs"),
+    "Clearance Sale": document.querySelector("#clearance-sale")
+  };
+
+  products.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+      <img src="${p.image}">
+      <h3>${p.name}</h3>
+      <div class="price">₹${p.price}</div>
+      <button class="primary-btn" onclick="orderWhatsApp('${p.name}')">
+        Order on WhatsApp
+      </button><br>
+      <button class="secondary-btn" onclick="showDetails('${p.name}','${p.description}')">
+        View Details
+      </button>
+    `;
+
+    sections[p.category]?.appendChild(card);
+  });
+}
+</script>
 
 </body>
 </html>
-
 
 
 
