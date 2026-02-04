@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "name": "Lavender Bliss",
+      "price": 499,
+      "image": "images/lavender.jpg",
+      "category": "Best Selling",
+      "badge": "Bestseller",
+      "description": "Relaxing floral candle for calm evenings."
+    },
+    {
+      "name": "Vanilla Dream",
+      "price": 549,
+      "image": "images/vanilla.jpg",
+      "category": "Jar Candles",
+      "badge": "",
+      "description": "Warm vanilla aroma for cozy moments."
+    },
+    {
+      "name": "Rose Love",
+      "price": 599,
+      "image": "images/rose.jpg",
+      "category": "Couple Candles",
+      "badge": "New",
+      "description": "Romantic rose scented candle for couples."
+    },
+    {
+      "name": "Festive Gift Box",
+      "price": 1299,
+      "image": "images/giftbox.jpg",
+      "category": "Gifting Packs",
+      "badge": "",
+      "description": "Perfect gifting combo for festivals."
+    },
+    {
+      "name": "Clearance Jar",
+      "price": 299,
+      "image": "images/clearance.jpg",
+      "category": "Clearance Sale",
+      "badge": "Sale",
+      "description": "Limited stock clearance candle."
+    }
+  ]
+}
