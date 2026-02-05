@@ -8,6 +8,24 @@
       "badge": "Bestseller",
       "description": "Relaxing floral candle for calm evenings."
     },
+
+    {
+      "name": "Vanilla Calm",
+      "price": 549,
+      "image": "images/vanilla.jpg",
+      "category": "Best Selling",
+      "badge": "",
+      "description": "Warm vanilla aroma for cozy moments."
+    },
+	
+	{
+      "name": "Vanilla Calm",
+      "price": 549,
+      "image": "images/vanilla.jpg",
+      "category": "Best Selling",
+      "badge": "",
+      "description": "Warm vanilla aroma for cozy moments."
+    },
     {
       "name": "Vanilla Dream",
       "price": 549,
@@ -39,6 +57,15 @@
       "category": "Clearance Sale",
       "badge": "Sale",
       "description": "Limited stock clearance candle."
-    }
+    },
+    {
+  "name": "Rose Mould",
+  "price": 599,
+  "image": "images/mould1.jpg",
+  "category": "Mould Candles",
+  "badge": "",
+  "description": "Handcrafted decorative mould candle."
+}
+
   ]
 }
